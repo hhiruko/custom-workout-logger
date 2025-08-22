@@ -1,0 +1,38 @@
+{
+  "name": "static-pwa-template",
+  "version": "1.0.0",
+  "description": "Static PWA Template",
+  "scripts": {
+    "test": "echo \"No tests yet.\"",
+    "dev": "vite",
+    "build": "npm run generate-favicons && vite build && npm run generate-sw",
+    "preview": "vite preview",
+    "generate-sw": "node scripts/generate-sw.mjs",
+    "generate-favicons": "node scripts/generate-favicons.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhiruko/mathbook.git"
+  },
+  "keywords": [
+    "pwa",
+    "vite",
+    "template",
+    "static"
+  ],
+  "author": "hhiruko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hhiruko/mathbook/issues"
+  },
+  "homepage": "https://github.com/hhiruko/mathbook#readme",
+  "devDependencies": {
+    "glob": "^11.0.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "favicons": "^7.2.0",
+    "lucide-preact": "^0.523.0",
+    "preact": "^10.26.9"
+  }
+}

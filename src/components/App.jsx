@@ -1,5 +1,5 @@
 import { ThemeButton } from "./ThemeButton";
-import { BookDashed, Settings2 } from "lucide-preact";
+import { Dumbbell, Settings2 } from "lucide-preact";
 import { Delete } from "./Delete";
 import { ImportExport } from "./ImportExport";
 
@@ -20,7 +20,7 @@ export function App() {
     return (
         <>
             <header>
-                <h1><BookDashed width={30} height={30} />Site:</h1>
+                <h1><Dumbbell width={30} height={30} />Workout Logger</h1>
                 <div id="header-right-container">
                     <ThemeButton />
                     <Settings2 onClick={handleSettings} />

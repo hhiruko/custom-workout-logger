@@ -1,9 +1,9 @@
 import { useCallback, useState } from "preact/hooks";
 import { debounce } from "../helpers/Debounce";
 
-export function ExerciseTable({storage, key, readonly}) {
+export function ExerciseTable({collection, exerciseKey, readonly}) {
     const emptyLog = Array.from({ length: 5 }, () => Array.from({ length: 2 }, () => Array.from({ length: 2 }, () => null)));
-    const [log, setLog] = useState(storage.get(key) ?? [...emptyLog]);
+    const [log, setLog] = useState(collection.get(exerciseKey) ?? [...emptyLog]);
 
     const exercises = [
         ["Skull crushers", "Straight legged deadlifts"],
@@ -15,16 +15,9 @@ export function ExerciseTable({storage, key, readonly}) {
 
     const saveLog = useCallback(
         debounce((superset, exercise, set, rep) => {
-            let newLog;
-            if(!log) {
-                newLog = [...emptyLog];
-            } else {
-                newLog = [...log];
-            }
-
+            let newLog = !log ? [...emptyLog] : [...log];
             newLog[superset][exercise][set] = parseInt(rep);
-            
-            storage.set(key, newLog);
+            collection.set(exerciseKey, newLog);
             setLog(newLog);
         }, 200),
         []
@@ -32,8 +25,8 @@ export function ExerciseTable({storage, key, readonly}) {
 
     return (
         <>
+            <h1>{exerciseKey}</h1>
             <table className="exercise-table">
-                <thead></thead>
                 <tbody>
                     {exercises.map((superset, s) => (
                         <>

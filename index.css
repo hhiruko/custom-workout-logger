@@ -72,3 +72,23 @@ button:focus {
 #header-right-container * {
     cursor: pointer;
 }
+
+.exercise-table {
+    border: 1px solid black;
+}
+
+.exercise-table td {
+    border-left: 1px solid black;
+}
+
+.exercise-table tr:nth-child(2n) {
+  border-bottom: 1px solid black;
+}
+
+.exercise-table-input {
+    padding: 0;
+    width: 50%;
+    margin: auto auto;
+    background-color: var(--border);
+    text-align: center;
+}

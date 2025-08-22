@@ -2,8 +2,12 @@ import { ThemeButton } from "./ThemeButton";
 import { Dumbbell, Settings2 } from "lucide-preact";
 import { Delete } from "./Delete";
 import { ImportExport } from "./ImportExport";
+import { ExerciseTable } from "./ExerciseTable";
+import { CollectionStorage } from "../models/CollectionStorage";
 
 export function App() {
+    const exerciseStorage = new CollectionStorage("exercise-collection");
+
     const handleSettings = () => {
         const settingsContainer = document.querySelector('.system-actions-container');
         if (!settingsContainer) {
@@ -30,6 +34,7 @@ export function App() {
                 <ImportExport />
                 <Delete />
             </div>
+            <ExerciseTable storage={exerciseStorage} readonly={false} />
         </>
     );
 }

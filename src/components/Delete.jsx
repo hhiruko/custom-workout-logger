@@ -7,6 +7,7 @@ export function Delete() {
 
     const handleDeleteAllButton = () => {
         Storage.clear();
+        location.reload();
     }
 
     const handleDeleteAllDialogTriggerButton = () => {

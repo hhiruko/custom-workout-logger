@@ -77,7 +77,7 @@ export function Stats({collection}) {
     return (
         <>
             <div className="stats-header">
-                <h1>Analytics:</h1>
+                <h1>Analytics</h1>
                 <button className="stats-dropdown-button" onClick={handleStatsDropdown}><ChevronDown /></button>
             </div>
             <div className="stats-container">

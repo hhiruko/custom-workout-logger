@@ -61,7 +61,7 @@ export function List({storage, collection}) {
 
     return (
         <>
-            <h1>Log:</h1>
+            <h1>Log</h1>
             {key && (
                 <ExerciseTable key={key} exerciseKey={key} collection={collection} readonly={false} />
             )}
@@ -70,7 +70,7 @@ export function List({storage, collection}) {
             <hr/>
 
             <div className="logs-header">
-                <h1>Logs:</h1>
+                <h1>Logs</h1>
                 <button className="logs-dropdown-button" onClick={handleLogsDropdown}><ChevronDown /></button>
             </div>
             <div className="logs-container">

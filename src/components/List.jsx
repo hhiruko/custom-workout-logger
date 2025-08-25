@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { ExerciseTable } from "./ExerciseTable";
 
 export function List({storage, collection}) {
@@ -11,12 +11,26 @@ export function List({storage, collection}) {
         setKey(newKey);
     };
 
+    const handleSaveLog = () => {
+        storage.remove(ACTIVE_KEY);
+        setKey(null);
+    };
+
+    useEffect(() => {
+        const logButton = document.querySelector('.log-button');
+        const saveButton = document.querySelector('.save-button');
+
+        logButton.disabled = !!key;
+        saveButton.disabled = !key;
+    }, [key]);
+
     return (
         <>
             {key && (
                 <ExerciseTable exerciseKey={key} collection={collection} readonly={false} />
             )}
-            <button onClick={handleAddLog}>add log</button>
+            <button disabled={!!key} className="log-button" onClick={handleAddLog}>Log</button>
+            <button disabled={!key} className="save-button" onClick={handleSaveLog}>Save</button>
             {collection.keys().filter(k => k.toString() !== key).map(k => (
                 <ExerciseTable exerciseKey={k} collection={collection} readonly={true} />
             ))}

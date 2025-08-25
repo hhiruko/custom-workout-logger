@@ -78,7 +78,7 @@
   "/custom-workout-logger/assets/index-BD_a2P-e.js",
   "/custom-workout-logger/"
 ];
-    const CACHE_NAME = 'v2025-08-25T10:04:58.460Z';
+    const CACHE_NAME = 'v2025-08-25T10:12:24.152Z';
 
     self.addEventListener('install', event => {
         self.skipWaiting();

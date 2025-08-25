@@ -1,5 +1,6 @@
 import { useCallback, useState } from "preact/hooks";
 import { debounce } from "../helpers/Debounce";
+import { exercises } from "../helpers/Exercise";
 
 export function ExerciseTable({collection, exerciseKey, readonly}) {
     const emptyLog = {
@@ -7,14 +8,6 @@ export function ExerciseTable({collection, exerciseKey, readonly}) {
         reps: Array.from({ length: 5 }, () => Array.from({ length: 2 }, () => Array.from({ length: 2 }, () => null)))
     }
     const [log, setLog] = useState(collection.get(exerciseKey) ?? structuredClone(emptyLog));
-
-    const exercises = [
-        ["Skull crushers", "Straight legged deadlifts"],
-        ["Upright rows", "Split squats"],
-        ["Dumbbell curls", "Front squats"],
-        ["Pullovers", "Flyes"],
-        ["Push-ups", "Dumbbell rows"],
-    ];
 
     const saveLog = useCallback(
         debounce((superset, exercise, set, rep) => {
@@ -68,7 +61,7 @@ export function ExerciseTable({collection, exerciseKey, readonly}) {
             </div>
             <table className="exercise-table">
                 <tbody>
-                    {exercises.map((superset, s) => (
+                    {exercises().map((superset, s) => (
                         <>
                             {superset.map((exercise, e) => (
                                 <tr>

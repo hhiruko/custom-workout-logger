@@ -5,6 +5,8 @@ import { ImportExport } from "./ImportExport";
 import { CollectionStorage } from "../models/CollectionStorage";
 import { List } from "./List";
 import { Storage } from "../models/Storage";
+import { Stats } from "./Stats";
+import { useState } from "preact/hooks";
 
 export function App() {
     const exerciseStorage = new CollectionStorage("exercise-collection");
@@ -31,6 +33,7 @@ export function App() {
                 <Delete />
             </div>
             <List storage={Storage} collection={exerciseStorage} />
+            <Stats collection={exerciseStorage} />
         </>
     );
 }

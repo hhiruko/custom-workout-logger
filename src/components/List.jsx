@@ -67,6 +67,7 @@ export function List({storage, collection}) {
             )}
             <button disabled={!!key} className="log-button" onClick={handleAddLog}>Add</button>
             <button disabled={!key} className="save-button" onClick={handleSaveLog}>Save</button>
+            <hr/>
 
             <div className="logs-header">
                 <h1>Logs:</h1>
@@ -83,6 +84,7 @@ export function List({storage, collection}) {
                     </Fragment>
                 ))}
             </div>
+            <hr/>
             
             <dialog id="delete-log-dialog" ref={deleteLogDialogRef} closedby="any">
                 <p>Are you sure you want to delete this log?</p>

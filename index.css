@@ -45,7 +45,7 @@ button:focus {
     justify-content: center;
 }
 
-#delete-all-button, #delete-all-dialog-trigger-button {
+#delete-all-button, #delete-all-dialog-trigger-button, #delete-log-button {
     background-color: var(--danger);
     color: white;
 }
@@ -93,7 +93,7 @@ button:focus {
     text-align: center;
 }
 
-.exercise-header-container {
+.exercise-header-container, .logs-header {
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: center;
@@ -102,4 +102,23 @@ button:focus {
 .exercise-weight-container {
     display: flex;
     justify-content: flex-end;
+}
+
+.logs-dropdown-button, .logs-dropdown-button:hover {
+    all: unset;
+    display: flex;
+    justify-self: flex-end;
+    cursor: pointer;
+}
+
+.logs-container {
+    display: none;
+}
+
+.logs-dropdown-button svg {
+  transition: transform 0.3s ease;
+}
+
+.logs-dropdown-button.opened svg {
+  transform: rotate(180deg);
 }

@@ -14,12 +14,7 @@ export function App() {
         if (!settingsContainer) {
             return;
         }
-
-        if(settingsContainer.style.display === 'block') {
-            settingsContainer.style.display = 'none';
-        } else {
-            settingsContainer.style.display = 'block';
-        }
+        settingsContainer.style.display = settingsContainer.style.display === 'block' ? 'none' : 'block';
     };
 
     return (

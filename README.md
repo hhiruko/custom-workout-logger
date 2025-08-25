@@ -1,6 +1,11 @@
-# Static PWA Template
+# Custom Workout Logger
 
-A lightweight, static **Progressive Web App (PWA)** template for quickly building and deploying offline-capable web apps.
+A lightweight, static **PWA** for logging, tracking, and analyzing my fitness progress.
+
+### 💪 App Features
+- Add, edit, and delete exercise sessions
+- Record weight, sets, reps, and workout duration
+- Visualize progression over time
 
 ### 🚀 Core Features
 - Offline support via caching
@@ -20,6 +25,7 @@ A lightweight, static **Progressive Web App (PWA)** template for quickly buildin
 - [Favicons](https://github.com/itgalaxy/favicons)
 - [Lucide-preact](https://lucide.dev/guide/packages/lucide-preact)
 - [Water.css](https://watercss.kognise.dev/)
+- [Chart.js](https://www.chartjs.org/)
 
 ---
 

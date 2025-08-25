@@ -4,13 +4,7 @@ export class Transfer {
     }
 
     import(json) {
-        let ms = 1;
         for(let [key, value] of Object.entries(json)) {
-            if(this.storage.get(key) !== null){
-                key = Date.now() + ms;
-                ms++;
-            }
-
             this.storage.set(key, value);
         }
     }

@@ -128,3 +128,7 @@ button:focus {
     grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
 }
+
+.exercise-weight-input {
+    width: 50px;
+}

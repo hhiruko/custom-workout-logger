@@ -19,9 +19,8 @@ export class Storage {
         const keys = [];
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
-            keys.push(parseInt(key));
+            keys.push(key);
         }
-        keys.sort((a,b) => b - a);
         return keys;
     }
 }

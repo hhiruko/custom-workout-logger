@@ -3,6 +3,10 @@ import Chart from 'chart.js/auto';
 import { useEffect, useState } from "preact/hooks";
 
 export function Stats({collection}) {
+    if(Object.keys(collection.list()).length === 0) {
+        return;
+    }
+
     const [list, setList] = useState(collection.list());
 
     useEffect(() => {
@@ -27,13 +31,16 @@ export function Stats({collection}) {
     }
 
     const drawVolumeLineChart = () => {
-        const result = Object.entries(list).map(([key, log]) => {
-            const repsSum = log.reps.flat(2).reduce((sum, rep) => sum + (rep ?? 0), 0);
-            return {
-                key,
-                value: log.weight * repsSum
-            };
-        });
+        const result = Object.entries(list)
+            .filter(([_, log]) => log.weight != null && log.time?.start != null && log.time?.end != null)
+            .map(([key, log]) => {
+                const repsSum = log.reps.flat(2).reduce((sum, rep) => sum + (rep ?? 0), 0);
+                const duration = Math.floor((log.time.end - log.time.start) / 1000 / 60);
+                return {
+                    key,
+                    value: (log.weight * repsSum) / duration
+                };
+            });
 
         const formatter = new Intl.DateTimeFormat(undefined, {
             year: "2-digit",
@@ -55,7 +62,7 @@ export function Stats({collection}) {
                 labels: keys,
                 datasets: [
                     {
-                        label: "Volume",
+                        label: "Volume Density",
                         data: values
                     }
                 ]
@@ -65,7 +72,6 @@ export function Stats({collection}) {
 
     useEffect(() => {
         drawVolumeLineChart();
-        console.log('triggered');
     }, [list]);
 
     return (
@@ -75,7 +81,7 @@ export function Stats({collection}) {
                 <button className="stats-dropdown-button" onClick={handleStatsDropdown}><ChevronDown /></button>
             </div>
             <div className="stats-container">
-                <h2>Volume Over Time</h2>
+                <h2>Progressive Overload</h2>
                 <canvas id="volume-line-chart-canvas"></canvas>
             </div>
             <hr/>

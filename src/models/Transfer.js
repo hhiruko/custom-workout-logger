@@ -17,7 +17,6 @@ export class Transfer {
 
     export() {
         const json = {};
-        
         for(let key of this.storage.keys()){
             json[key] = this.storage.get(key);
         }

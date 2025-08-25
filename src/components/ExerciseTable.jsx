@@ -1,13 +1,25 @@
 import { useCallback, useState } from "preact/hooks";
 import { debounce } from "../helpers/Debounce";
 import { exercises } from "../helpers/Exercise";
+import { Timer, TimerOff } from "lucide-preact";
 
 export function ExerciseTable({collection, exerciseKey, readonly}) {
     const emptyLog = {
         weight: null,
+        time: {
+            start: null,
+            end: null
+        },
         reps: Array.from({ length: 5 }, () => Array.from({ length: 2 }, () => Array.from({ length: 2 }, () => null)))
     }
     const [log, setLog] = useState(collection.get(exerciseKey) ?? structuredClone(emptyLog));
+
+    const dateTimeOptions = {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    };
 
     const saveLog = useCallback(
         debounce((superset, exercise, set, rep) => {
@@ -29,21 +41,50 @@ export function ExerciseTable({collection, exerciseKey, readonly}) {
                 collection.set(exerciseKey, newLog);
                 return newLog;
             });
-        }, 500),
+        }, 1000),
         [exerciseKey, collection]
     );
 
-    const dateTimeOptions = {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-    };
+    const saveStartTime = useCallback(
+        () => {
+            setLog(prev => {
+                let newLog = !prev ? structuredClone(emptyLog) : structuredClone(prev);
+                newLog.time.start = Date.now();
+                collection.set(exerciseKey, newLog);
+                return newLog;
+            })
+        },
+        [exerciseKey, collection]
+    );
+
+    const saveEndTime = useCallback(
+        () => {
+            setLog(prev => {
+                let newLog = !prev ? structuredClone(emptyLog) : structuredClone(prev);
+                newLog.time.end = Date.now();
+                collection.set(exerciseKey, newLog);
+                return newLog;
+            })
+        },
+        [exerciseKey, collection]
+    );
 
     return (
         <>
             <div className="exercise-header-container">
                 <h2>{new Intl.DateTimeFormat(undefined, dateTimeOptions).format(new Date(parseInt(exerciseKey)))}</h2>
+                <div className="exercise-time-container">
+                    {readonly ? 
+                        (log['time']['start'] ?? false) && (log['time']['end'] ?? false) ? 
+                            Math.floor((log['time']['end'] - log['time']['start']) / 1000 / 60) + ' min'
+                            : null 
+                        : (
+                        <>
+                            <button disabled={log['time']['start'] ?? false} onClick={saveStartTime}><Timer /></button>
+                            <button disabled={log['time']['end'] ?? false} onClick={saveEndTime}><TimerOff /></button>
+                        </>
+                    )}
+                </div>
                 <div className="exercise-weight-container">
                     {readonly ? (
                         <p>{log['weight']}</p>

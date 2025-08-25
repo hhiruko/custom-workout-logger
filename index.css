@@ -93,7 +93,7 @@ button:focus {
     text-align: center;
 }
 
-.exercise-header-container, .logs-header, .stats-header {
+.logs-header, .stats-header {
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: center;
@@ -121,4 +121,10 @@ button:focus {
 
 .logs-dropdown-button.opened svg, .stats-dropdown-button.opened svg {
   transform: rotate(180deg);
+}
+
+.exercise-header-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
 }

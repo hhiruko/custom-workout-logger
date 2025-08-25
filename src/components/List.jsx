@@ -32,7 +32,7 @@ export function List({storage, collection}) {
             <button disabled={!!key} className="log-button" onClick={handleAddLog}>Log</button>
             <button disabled={!key} className="save-button" onClick={handleSaveLog}>Save</button>
             {collection.keys().filter(k => k.toString() !== key).map(k => (
-                <ExerciseTable exerciseKey={k} collection={collection} readonly={true} />
+                <ExerciseTable key={k} exerciseKey={k} collection={collection} readonly={true} />
             ))}
         </>
     );

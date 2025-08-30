@@ -75,10 +75,10 @@
   "/custom-workout-logger/cdn/water.light.min.css",
   "/custom-workout-logger/cdn/water.dark.min.css",
   "/custom-workout-logger/assets/index-iS_38sov.css",
-  "/custom-workout-logger/assets/index-cAWyI8e6.js",
+  "/custom-workout-logger/assets/index-BSqGv3o8.js",
   "/custom-workout-logger/"
 ];
-    const CACHE_NAME = 'v2025-08-25T10:20:43.107Z';
+    const CACHE_NAME = 'v2025-08-30T09:10:49.231Z';
 
     self.addEventListener('install', event => {
         self.skipWaiting();

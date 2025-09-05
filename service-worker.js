@@ -76,7 +76,7 @@
   "/custom-workout-logger/assets/index-BppKJqCA.js",
   "/custom-workout-logger/"
 ];
-    const CACHE_NAME = 'v2025-09-05T07:24:00.077Z';
+    const CACHE_NAME = 'v2025-09-05T07:29:26.850Z';
 
     self.addEventListener('install', event => {
         self.skipWaiting();

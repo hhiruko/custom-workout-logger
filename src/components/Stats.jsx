@@ -38,7 +38,7 @@ export function Stats({collection}) {
                 const duration = Math.floor((log.time.end - log.time.start) / 1000 / 60);
                 return {
                     key,
-                    value: (log.weight * repsSum) / duration
+                    value: ((log.weight * repsSum) + (60 - duration)) / 100
                 };
             });
 

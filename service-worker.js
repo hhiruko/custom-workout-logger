@@ -71,14 +71,12 @@
   "/custom-workout-logger/favicons/android-chrome-256x256.png",
   "/custom-workout-logger/favicons/android-chrome-192x192.png",
   "/custom-workout-logger/favicons/android-chrome-144x144.png",
-  "/custom-workout-logger/cdn/water.system.min.css",
-  "/custom-workout-logger/cdn/water.light.min.css",
-  "/custom-workout-logger/cdn/water.dark.min.css",
+  "/custom-workout-logger/cdn/water.min.css",
   "/custom-workout-logger/assets/index-iS_38sov.css",
-  "/custom-workout-logger/assets/index-BSqGv3o8.js",
+  "/custom-workout-logger/assets/index-BppKJqCA.js",
   "/custom-workout-logger/"
 ];
-    const CACHE_NAME = 'v2025-08-30T09:10:49.231Z';
+    const CACHE_NAME = 'v2025-09-05T07:24:00.077Z';
 
     self.addEventListener('install', event => {
         self.skipWaiting();
